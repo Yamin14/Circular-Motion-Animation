@@ -23,12 +23,16 @@ class Animation(Widget):
 			Color(rgba=self.red)
 			Rectangle(size=(720, 1440))
 			
-		#circle
+		#circles
 			self.x, self.y = 100, 700
 			self.speed = 0
 			self.inc = 0
 			Color(rgba=self.yellow)
 			self.circle = Ellipse(size=(50, 50), pos=(self.x, self.y))
+			
+			self.x1, self.y1 = 320, 480
+			Color(rgba=self.blue)
+			self.circle1 = Ellipse(size=(50, 50), pos=(self.x1, self.y1))
 		
 		Clock.schedule_interval(self.play, 0)
 		
@@ -37,9 +41,13 @@ class Animation(Widget):
 		self.x = 320 + (220 * sin(radians(self.speed)))
 		self.y = 700 + (220 * cos(radians(self.speed)))
 		
+		self.x1 = 320 + (220 * sin(radians(self.speed-90)))
+		self.y1 = 700 + (220 * cos(radians(self.speed-90)))
+		
 		self.speed += self.inc
 		self.inc += 0.05
 		self.circle.pos = (self.x, self.y)
+		self.circle1.pos = (self.x1, self.y1)
 		
 class MyApp(App):
 	def build(self):
